@@ -285,20 +285,9 @@ body {
 ========================= */
 
 .projects-grid {
-    max-width: 1150px;
-
-    margin: auto;
-
     display: grid;
-
-    grid-template-columns:
-        repeat(auto-fit, minmax(280px, 1fr));
-
-    gap: 28px;
-
-    position: relative;
-
-    z-index: 1;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
 }
 
 
@@ -326,7 +315,6 @@ body {
     box-shadow:
         0 12px 30px rgba(10, 150, 230, 0.14);
 }
-
 
 .project-card img {
     width: 100%;
