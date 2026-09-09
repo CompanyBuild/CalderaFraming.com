@@ -26,9 +26,9 @@ body {
 ========================= */
 
 .header {
-    min-height: 20px;
+    min-height: 10px;
 
-    display: flex;
+    display: stretch;
     align-items: center;
 
     padding: 10px 5%;
