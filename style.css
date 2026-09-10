@@ -28,7 +28,7 @@ body {
 .header {
     min-height: 10px;
 
-    display: stretch;
+    display: flex;
     align-items: center;
 
     padding: 10px 5%;
