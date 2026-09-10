@@ -82,8 +82,14 @@ async function loadProjects() {
         files.forEach(function(file) {
 
             // Only allow image files
-            if (!file.name.match(/\.(jpg|jpeg|png|gif|webp)$/i)) {
-                return;
+          function getProjectName(filename) {
+                return filename
+                    .replace(/\.[^/.]+$/, "")
+                    .replace(/\d+$/, "")
+                    .replace(/[_-]/g, " ")
+                    .replace(/\b\w/g, function(letter) {
+                        return letter.toUpperCase();
+                    });
             }
 
 
