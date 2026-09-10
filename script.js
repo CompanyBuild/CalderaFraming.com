@@ -102,13 +102,13 @@ async function loadProjects() {
             // Create image
             const image = document.createElement("img");
 
-            image.src = file.download_url;
+            image.src = `${PROJECT_FOLDER}/${folder.name}/${info.image}`;
             image.onclick = function() {
                 window.open(file.download_url, "_blank");
             };
             
             image.style.cursor = "pointer";
-            image.alt = getProjectName(file.name);
+            image.alt = info.title;
 
 
             // Create information container
