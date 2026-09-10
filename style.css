@@ -26,7 +26,7 @@ body {
 ========================= */
 
 .header {
-    max-height: 10px 1%;
+    max-height: 30px;
 
     display: flex;
     align-items: center;
