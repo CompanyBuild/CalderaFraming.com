@@ -103,11 +103,11 @@ async function loadProjects() {
             const image = document.createElement("img");
 
             image.src = file.download_url;
-            img.onclick = function() {
+            image.onclick = function() {
                 window.open(file.download_url, "_blank");
             };
             
-            img.style.cursor = "pointer";
+            image.style.cursor = "pointer";
             image.alt = getProjectName(file.name);
 
 
