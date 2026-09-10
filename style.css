@@ -26,12 +26,12 @@ body {
 ========================= */
 
 .header {
-    min-height: 10px;
+/*    min-height: 10px; */
 
     display: flex;
     align-items: center;
 
-    padding: 10px 5%;
+    padding: 5px 4%;
 
     background: white;
 
