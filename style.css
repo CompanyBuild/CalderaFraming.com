@@ -286,15 +286,16 @@ body {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 300px);
     gap: 20px;
+    justify-content: center;
 }
 
 
 .project-card {
     background: white;
 
-    border: 1px solid #dce5ea;
+    border: 2px solid #dce5ea;
 
     overflow: hidden;
 
