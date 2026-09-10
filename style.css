@@ -31,7 +31,7 @@ body {
     display: flex;
     align-items: center;
 
-    padding: 5px 4%;
+    padding: 5px 2%;
 
     background: white;
 
@@ -57,8 +57,8 @@ body {
 }
 
 .logo {
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
 
     object-fit: contain;
 }
