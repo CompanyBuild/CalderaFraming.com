@@ -345,6 +345,24 @@ body {
     line-height: 1.5;
 }
 
+@media (max-width: 650px) {
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        width: 100%;
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+
+    .project-card {
+        width: 100%;
+        max-width: 300px;
+        justify-self: center;
+        box-sizing: border-box;
+    }
+
+}
+
 /* =========================
    CONTACT.
 ========================= */
