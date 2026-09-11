@@ -100,7 +100,7 @@ async function loadProjects() {
 
 
             // Create image
-            const infoResponse = await fetch(
+            const infoResponse = fetch(
                 `${PROJECT_FOLDER}/${file.name}/info.json`
             );
             
