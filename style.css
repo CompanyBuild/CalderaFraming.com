@@ -260,7 +260,7 @@ body {
     z-index: 2;
 }
 
-.review-section h2 {
+.reviews-section h2 {
     font-size: 32px;
 
     margin-top: 0;
@@ -268,7 +268,7 @@ body {
     color: rgb(10, 150, 230);
 }
 
-.review-section p {
+.reviews-section p {
     max-width: 750px;
 
     margin: auto;
