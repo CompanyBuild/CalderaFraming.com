@@ -185,7 +185,7 @@ async function loadProjects() {
 
             const description = document.createElement("p");
 
-            description.innerHTML  = info.description || "No desc";
+            description.textContent  = info.description || "No desc";
 
             // Assemble card
 
