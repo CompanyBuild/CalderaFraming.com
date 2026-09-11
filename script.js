@@ -1,5 +1,5 @@
-const GITHUB_USERNAME = "ANON";
-const GITHUB_REPOSITORY = "Website.com";
+const GITHUB_USERNAME = "CompanyBuild";
+const GITHUB_REPOSITORY = "calderaframing.com";
 const PROJECT_FOLDER = "images/projects";
 
 
