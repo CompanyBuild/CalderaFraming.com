@@ -185,7 +185,7 @@ async function loadProjects() {
 
             const description = document.createElement("p");
 
-            description.textContent = info.description.replace(/\n/g, "<br>"); || "No desc";
+            description.textContent = info.description.replace(/\n/g, "<br>") || "No desc";
 
             // Assemble card
 
