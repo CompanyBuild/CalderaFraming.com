@@ -101,6 +101,7 @@ async function loadProjects() {
 
             // Create image
             const image = document.createElement("img");
+            const info = `${PROJECT_FOLDER}/${file}/info.json`;
 
             image.src = `${PROJECT_FOLDER}/${file}/${info.image}`;
             image.onclick = function() {
