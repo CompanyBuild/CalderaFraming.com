@@ -104,7 +104,7 @@ async function loadProjects() {
                 `${PROJECT_FOLDER}/${file.name}/info.json`
             );
             
-            const info = await infoResponse.json();
+            const info = infoResponse.json();
             const image = document.createElement("img");
 
             image.src = `${PROJECT_FOLDER}/${file.name}/${info.image}`;
