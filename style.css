@@ -284,67 +284,45 @@ body {
    PROJECTS
 ========================= */
 
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 300px);
-    gap: 20px;
-    justify-content: center;
+#projects-grid {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
-
 
 .project-card {
-    background: white;
-
-    border: 2px solid #dce5ea;
-
+    max-width: 100%;
+    box-sizing: border-box;
     overflow: hidden;
-
-    box-shadow:
-        0 5px 18px rgba(0, 0, 0, 0.06);
-
-    transition:
-        transform 0.2s,
-        box-shadow 0.2s,
-        border-color 0.2s;
-}
-
-.project-card:hover {
-    transform: translateY(-6px);
-
-    border-color: rgb(10, 150, 230);
-
-    box-shadow:
-        0 12px 30px rgba(10, 150, 230, 0.14);
 }
 
 .project-card img {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
     display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
 }
-
 
 .project-info {
-    padding: 20px;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
 }
 
-.project-info h3 {
-    margin: 0 0 10px;
+@media (max-width: 600px) {
 
-    font-size: 21px;
+    #projects-grid {
+        grid-template-columns: 1fr;
+        padding: 15px;
+        box-sizing: border-box;
+    }
 
-    color: rgb(10, 150, 230);
+    .project-card {
+        width: 100%;
+    }
+
 }
-
-.project-info p {
-    margin: 0;
-
-    color: #666;
-
-    line-height: 1.5;
-}
-
 
 /* =========================
    CONTACT.
