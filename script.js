@@ -100,8 +100,12 @@ async function loadProjects() {
 
 
             // Create image
+            const infoResponse = await fetch(
+                `${PROJECT_FOLDER}/${file.name}/info.json`
+            );
+            
+            const info = await infoResponse.json();
             const image = document.createElement("img");
-            const info = `${PROJECT_FOLDER}/${file.name}/info.json`;
 
             image.src = `${PROJECT_FOLDER}/${file.name}/${info.image}`;
             image.onclick = function() {
