@@ -1,5 +1,5 @@
-const GITHUB_USERNAME = "CompanyBuild";
-const GITHUB_REPOSITORY = "CalderaFraming.com";
+const GITHUB_USERNAME = "ANON";
+const GITHUB_REPOSITORY = "Website.com";
 const PROJECT_FOLDER = "images/projects";
 
 
@@ -9,7 +9,6 @@ const PROJECT_FOLDER = "images/projects";
 
 function showPage(pageName, button) {
 
-    // Hide all pages
     const pages = document.querySelectorAll(".page");
 
     pages.forEach(function(page) {
@@ -17,7 +16,6 @@ function showPage(pageName, button) {
     });
 
 
-    // Show selected page
     const selectedPage = document.getElementById(pageName);
 
     if (selectedPage) {
@@ -25,7 +23,6 @@ function showPage(pageName, button) {
     }
 
 
-    // Remove active state from navigation buttons
     const buttons = document.querySelectorAll(".nav-button");
 
     buttons.forEach(function(navButton) {
@@ -33,17 +30,32 @@ function showPage(pageName, button) {
     });
 
 
-    // Activate selected button
     if (button) {
         button.classList.add("active");
     }
 
 
-    // Scroll to the top
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     });
+}
+
+
+// =========================
+// PROJECT NAME FORMATTER
+// =========================
+
+function getProjectName(filename) {
+
+    return filename
+        .replace(/\.[^/.]+$/, "")
+        .replace(/\d+$/, "")
+        .replace(/[_-]/g, " ")
+        .replace(/\b\w/g, function(letter) {
+            return letter.toUpperCase();
+        });
+
 }
 
 
@@ -75,66 +87,110 @@ async function loadProjects() {
         const files = await response.json();
 
 
-        // Clear existing projects
+        if (!Array.isArray(files)) {
+            throw new Error("GitHub did not return a folder.");
+        }
+
+
         projectsGrid.innerHTML = "";
 
 
-        files.forEach(function(file) {
+        for (const file of files) {
 
-            // Only allow image files
-          function getProjectName(filename) {
-                return filename
-                    .replace(/\.[^/.]+$/, "")
-                    .replace(/\d+$/, "")
-                    .replace(/[_-]/g, " ")
-                    .replace(/\b\w/g, function(letter) {
-                        return letter.toUpperCase();
-                    });
+            if (file.type !== "dir") {
+                continue;
+            }
+
+
+            const infoResponse = await fetch(
+                `https://api.github.com/repos/${GITHUB_USERNAME}/${GITHUB_REPOSITORY}/contents/${PROJECT_FOLDER}/${encodeURIComponent(file.name)}/info.json`
+            );
+
+
+            if (!infoResponse.ok) {
+                console.warn(`No info.json found for ${file.name}.`);
+                continue;
+            }
+
+
+            const infoFile = await infoResponse.json();
+
+
+            const infoResponseData = await fetch(infoFile.download_url);
+
+
+            if (!infoResponseData.ok) {
+                console.warn(`Could not read info.json for ${file.name}.`);
+                continue;
+            }
+
+
+            const info = await infoResponseData.json();
+
+
+            if (!info.image) {
+                console.warn(`No image specified in ${file.name}/info.json.`);
+                continue;
             }
 
 
             // Create project card
+
             const projectCard = document.createElement("div");
 
             projectCard.className = "project-card";
 
 
             // Create image
-            const infoResponse = fetch(
-                `${PROJECT_FOLDER}/${file.name}/info.json`
-            );
-            
-            const info = infoResponse.json();
+
             const image = document.createElement("img");
 
-            image.src = `${PROJECT_FOLDER}/${file.name}/${info.image}`;
-            image.onclick = function() {
-                window.open(file.download_url, "_blank");
-            };
-            
+            image.src =
+                `${PROJECT_FOLDER}/${encodeURIComponent(file.name)}/${encodeURIComponent(info.image)}`;
+
+            image.alt =
+                info.title || getProjectName(file.name);
+
             image.style.cursor = "pointer";
-            image.alt = info.title;
+
+
+            // Open full image when clicked
+
+            image.onclick = function() {
+
+                window.open(
+                    image.src,
+                    "_blank"
+                );
+
+            };
 
 
             // Create information container
+
             const projectInfo = document.createElement("div");
 
             projectInfo.className = "project-info";
 
 
             // Create title
+
             const title = document.createElement("h3");
 
-            title.textContent = getProjectName(file.name);
+            title.textContent =
+                info.title || getProjectName(file.name);
 
 
             // Create description
+
             const description = document.createElement("p");
 
-            description.textContent = "Previous project.";
+            description.textContent =
+                info.description || "Previous project.";
 
 
             // Assemble card
+
             projectInfo.appendChild(title);
 
             projectInfo.appendChild(description);
@@ -145,10 +201,9 @@ async function loadProjects() {
 
             projectsGrid.appendChild(projectCard);
 
-        });
+        }
 
 
-        // Show message if there are no projects
         if (projectsGrid.children.length === 0) {
 
             projectsGrid.innerHTML = `
@@ -171,21 +226,6 @@ async function loadProjects() {
         `;
 
     }
-}
-
-
-// =========================
-// PROJECT NAME FORMATTER
-// =========================
-
-function getProjectName(filename) {
-
-    return filename
-        .replace(/\.[^/.]+$/, "")
-        .replace(/[_-]/g, " ")
-        .replace(/\b\w/g, function(letter) {
-            return letter.toUpperCase();
-        });
 
 }
 
