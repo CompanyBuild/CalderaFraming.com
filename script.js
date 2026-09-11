@@ -102,7 +102,7 @@ async function loadProjects() {
             // Create image
             const image = document.createElement("img");
 
-            image.src = `${PROJECT_FOLDER}/${folder.name}/${info.image}`;
+            image.src = `${PROJECT_FOLDER}/${file}/${info.image}`;
             image.onclick = function() {
                 window.open(file.download_url, "_blank");
             };
