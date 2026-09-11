@@ -235,6 +235,49 @@ body {
     color: #555;
 }
 
+/* =========================
+   REVIEWS
+========================= */
+
+.reviews-section {
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    padding: 45px;
+
+    text-align: center;
+
+    background: white;
+
+    border-top: 4px solid rgb(10, 150, 230);
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.05);
+
+    position: relative;
+
+    z-index: 1;
+}
+
+.review-section h2 {
+    font-size: 32px;
+
+    margin-top: 0;
+
+    color: rgb(10, 150, 230);
+}
+
+.review-section p {
+    max-width: 750px;
+
+    margin: auto;
+
+    line-height: 1.7;
+
+    color: #555;
+}
+
 
 /* =========================
    PAGE TITLES
